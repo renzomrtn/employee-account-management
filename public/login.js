@@ -37,15 +37,16 @@ document.getElementById("employee-form").addEventListener("submit", async functi
         if (response.ok) {
             alert("Login successful!");
             console.log(data);
-                console.log("Full data:", data);
-                console.log("Role value:", data.role);
-                console.log("Role type:", typeof data.role);
+            console.log("Full data:", data);
+            console.log("Role value:", data.role);
+            console.log("Role type:", typeof data.role);
 
             if (data.role === 'Admin') {
-                window.location.href = "admin-dashboard.html";
+                window.location.href = "../admin/admin-dashboard.php";
             } else if (data.role === 'User') {
-                window.location.href = "employee-dashboard.html";
-            } else {
+                window.location.href = "../employee/employee-dashboard.php";
+            }
+            else {
                 alert("Unknown role");
             }
         } else {

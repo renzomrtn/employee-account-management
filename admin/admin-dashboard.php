@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'Admin') {
+    header("Location: /Activity1/public/access-denied.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Data Table</title>
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="../public/global.css">
     <link rel="stylesheet" href="admin-dashboard.css">
     <style>
         table,
@@ -129,7 +138,7 @@
             </div>
             </div>
         </div>
-        <script src="script.js"></script>
+        <script src="admin-dashboard.js"></script>
         <script src="logout.js"></script>
 </body>
 

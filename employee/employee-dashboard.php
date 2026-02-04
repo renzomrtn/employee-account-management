@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'User') {
+    header("Location: /Activity1/public/access-denied.html");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baseline Activity</title>
-    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="../public/global.css">
 </head>
 
 <body>

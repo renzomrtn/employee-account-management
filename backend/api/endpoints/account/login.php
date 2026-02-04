@@ -1,5 +1,9 @@
 <?php
-// api/endpoints/account/login.php
+session_set_cookie_params([
+    'path' => '/Activity1',
+    'httponly' => true,
+    'samesite' => 'Lax'
+]);
 
 session_start();
 

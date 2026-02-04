@@ -8,7 +8,7 @@ CREATE TABLE employee (
     birthday DATE NOT NULL,
     position ENUM(
         'Trainee', 'Personnel', 'Analyst', 'Developer',
-        'Project leader', 'Manager', 'CEO', 'Suport'
+        'Project leader', 'Manager', 'CEO', 'Support'
     ) NOT NULL,
     department ENUM(
         'Frontend', 'Backend', 'QA',
@@ -53,6 +53,6 @@ INSERT INTO account (
 ) VALUES (
     1,
     'admin',
-    '$2y$10$e0NRX...examplehash...',
+    '168superadminx192',
     'Admin'
 );
