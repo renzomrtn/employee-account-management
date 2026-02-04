@@ -12,22 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 require_once __DIR__ . "/../../config/database.php";
 require_once __DIR__ . "/../../models/employee.php";
 
-//instantiate database and employee object
 $database = new Database();
 $db = $database->connect();
 
-//instantiate employee
 $employee = new Employee($db);
 
-//employee query
 $result = $employee->read();
 
-//get row count
 $num = $result->rowCount();
 
-//check if there are any employees
 if ($num > 0) {
-    //employees array
     $employee_arr = array();
     $employee_arr['success'] = true;
     $employee_arr['data'] = array();
@@ -44,15 +38,12 @@ if ($num > 0) {
             'department' => $department
         );        
 
-        //push to data
         array_push($employee_arr['data'], $employee_item);
     }
 
-    //turn to json
     echo json_encode($employee_arr);
 
 } else {
-    //no employees found
     echo json_encode([
         'data' => []
     ]);

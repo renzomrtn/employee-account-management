@@ -1,18 +1,15 @@
 <?php
 
 class Account {
-    private $conn; // holds the connection object
-    private $table = "account"; // table name in our db
+    private $conn;
+    private $table = "account";
 
-// current account properties
 public $a_id;
 public $e_id;
 public $username;
 public $password;
 public $role;
 
-
-    // constructor of the  Account class
     public function __construct($db) {
         $this->conn = $db;
     }
@@ -41,23 +38,17 @@ public $role;
         return ['success' => false];
     }
 
-    // method to read all employees
     public function read() {
-        // create query
         $query = "SELECT * FROM " . $this->table . " ORDER BY a_id DESC";
 
-        // prepare statement
         $stmt = $this->conn->prepare($query);
 
-        // execute query
         $stmt->execute();
         
         return $stmt;
     }
 
-    // create account
     public function create(){
-    // create query
     $query = 'INSERT INTO ' . $this->table . '
     SET
         a_id = :a_id,
@@ -66,10 +57,8 @@ public $role;
         password = :password,
         role = :role';
 
-    // prepare statement
     $stmt = $this->conn->prepare($query);
 
-    // Helper function to clean data while preserving NULL values
     $cleanData = function($value) {
         if ($value === null) {
             return null;
@@ -77,31 +66,26 @@ public $role;
         return htmlspecialchars(strip_tags($value));
     };
 
-    // Clean data while preserving NULL values
     $this->a_id = $cleanData($this->a_id);
     $this->e_id = $cleanData($this->e_id);
     $this->username = $cleanData($this->username);
     $this->password = $cleanData($this->password);
     $this->role = $cleanData($this->role);
 
-    // bind data
     $stmt->bindParam(':a_id', $this->a_id);
     $stmt->bindParam(':e_id', $this->e_id);
     $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':password', $this->password);
     $stmt->bindParam(':role', $this->role);
 
-    // execute query
     if($stmt->execute()){
         return true;
     }
 
-    // print error if something goes wrong
     printf("Error: %s.\n", $stmt->error);
     return false;
     }
 
-    // update account
     public function update() {
     $query = "
     UPDATE " . $this->table . "
@@ -115,10 +99,8 @@ public $role;
         a_id = :a_id_where
     ";
     
-    // prepare statement
     $stmt = $this->conn->prepare($query);
 
-    // Helper function to clean data while preserving NULL values
     $cleanData = function($value) {
         if ($value === null) {
             return null;
@@ -126,29 +108,24 @@ public $role;
         return htmlspecialchars(strip_tags($value));
     };
 
-    // Clean data while preserving NULL values
     $this->a_id = $cleanData($this->a_id);
     $this->e_id = $cleanData($this->e_id);
     $this->username = $cleanData($this->username);
     $this->password = $cleanData($this->password);
     $this->role = $cleanData($this->role);
     
-    // bind data - make sure all parameters match the query
     $stmt->bindParam(':a_id', $this->a_id);
     $stmt->bindParam(':e_id', $this->e_id);
     $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':password', $this->password);
     $stmt->bindParam(':role', $this->role);
     
-    // Bind the WHERE clause parameter
     $stmt->bindParam(':a_id_where', $this->a_id);
 
-    // execute query
     if($stmt->execute()){
         return true;
     }
 
-    // Log the error instead of printing it
     error_log("Database Error: " . implode(", ", $stmt->errorInfo()));
     return false;        
     }

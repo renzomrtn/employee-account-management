@@ -7,12 +7,10 @@ header('Access-Control-Allow-Methods: GET, POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Credentials: true');
 
-// Preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
 
-// Check if user is logged in
 if (isset($_SESSION['account_id']) && isset($_SESSION['role'])) {
     http_response_code(200);
     echo json_encode([

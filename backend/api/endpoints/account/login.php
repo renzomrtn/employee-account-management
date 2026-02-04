@@ -13,7 +13,6 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 header('Access-Control-Allow-Credentials: true');
 
-// Preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit(0);
 }
@@ -24,10 +23,8 @@ include_once '../../models/account.php';
 $database = new Database();
 $db = $database->connect();
 
-// Read JSON body
 $data = json_decode(file_get_contents("php://input"));
 
-// Validate input
 if (!isset($data->username) || !isset($data->password)) {
     http_response_code(400);
     echo json_encode([

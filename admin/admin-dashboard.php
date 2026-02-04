@@ -21,13 +21,9 @@ if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'Admin') {
         th,
         td {
             border: 1px solid #4c7aaf;
-            /* Adds borders to the table, headers, and data cells */
             border-collapse: collapse;
-            /* Collapses borders into a single line */
             padding: 8px;
-            /* Adds space between cell content and borders */
             text-align: left;
-            /* Aligns text to the left */
         }
     </style>
 </head>

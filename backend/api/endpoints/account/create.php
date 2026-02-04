@@ -5,7 +5,6 @@ error_reporting(E_ALL);
 header("Content-Type: application/json");
 require_once __DIR__ . "/../../config/database.php";
 
-// Instantiate Database class and get PDO connection
 $database = new Database();
 $conn = $database->connect();
 

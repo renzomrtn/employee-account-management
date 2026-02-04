@@ -78,9 +78,9 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
     createEmployee(data)
         .then(response => {
             if (response.success) {
-                data.e_id = response.e_id; // get the new employee ID
+                data.e_id = response.e_id; 
                 console.log("Data being sent to createAccount:", data);
-                return createAccount(data); // chain account creation
+                return createAccount(data); 
             } else {
                 throw new Error(response.message);
             }
@@ -88,7 +88,7 @@ document.getElementById("employee-form").addEventListener("submit", function (e)
         .then(response => {
             alert(response.message);
             this.reset();
-            loadTable(); // single load call
+            loadTable(); 
         })
         .catch(err => {
             console.error(err);

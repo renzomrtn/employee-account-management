@@ -16,7 +16,6 @@ document.getElementById("logout-btn").addEventListener("click", async function (
         const data = await response.json();
 
         if (response.ok) {
-            // Redirect to login page
             window.location.href = "login.html";
         } else {
             alert("Logout failed");

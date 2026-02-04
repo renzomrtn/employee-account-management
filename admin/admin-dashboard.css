@@ -84,7 +84,6 @@ label {
   margin-bottom: 8px;
 }
 
-/* Style ALL form inputs including select */
 input[type="text"],
 input[type="date"],
 input[type="password"],
@@ -100,7 +99,6 @@ select {
   transition: all 0.3s;
 }
 
-/* Remove default select appearance */
 select {
   appearance: none;
   -webkit-appearance: none;
