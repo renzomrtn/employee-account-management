@@ -134,8 +134,8 @@ if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'Admin') {
             </div>
             </div>
         </div>
-        <script src="admin-dashboard.js"></script>
-        <script src="logout.js"></script>
+        <script src="/Activity1/admin/admin-dashboard.js"></script>
+        <script src="/Activity1/public/logout.js"></script>
 </body>
 
 </html>

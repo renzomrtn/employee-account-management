@@ -35,7 +35,7 @@ if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'User') {
             </div>
         </div>
     </div>
-    <script src="logout.js"></script>
+    <script src="/Activity1/public/logout.js"></script>
 </body>
 
 </html>

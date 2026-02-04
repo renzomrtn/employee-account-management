@@ -18,7 +18,7 @@ document.getElementById("employee-form").addEventListener("submit", async functi
 
     try {
         const response = await fetch(
-            "../backend/api/endpoints/account/login.php",
+            "/Activity1/backend/api/endpoints/account/login.php",
             {
                 method: "POST",
                 headers: {
@@ -42,9 +42,9 @@ document.getElementById("employee-form").addEventListener("submit", async functi
             console.log("Role type:", typeof data.role);
 
             if (data.role === 'Admin') {
-                window.location.href = "../admin/admin-dashboard.php";
+                window.location.href = "/Activity1/admin/admin-dashboard.php";
             } else if (data.role === 'User') {
-                window.location.href = "../employee/employee-dashboard.php";
+                window.location.href = "/Activity1/employee/employee-dashboard.php";
             }
             else {
                 alert("Unknown role");

@@ -16,13 +16,13 @@ document.getElementById("logout-btn").addEventListener("click", async function (
         const data = await response.json();
 
         if (response.ok) {
-            window.location.href = "login.html";
+            window.location.href = "http://localhost/Activity1";
         } else {
             alert("Logout failed");
         }
 
     } catch (error) {
         console.error("Error:", error);
-        window.location.href = "login.html";
+        window.location.href = "http://localhost/Activity1";
     }
 });
