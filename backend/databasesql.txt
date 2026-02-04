@@ -53,6 +53,6 @@ INSERT INTO account (
 ) VALUES (
     1,
     'admin',
-    '168superadminx192',
+    '$2y$10$NKL6oi6k29V029ZMb5.H3eSY//ZfST/aiLe75gFZiOyF883Tjx1Hy',
     'Admin'
 );
