@@ -1,0 +1,79 @@
+CREATE DATABASE employee_db;
+USE employee_db;
+
+CREATE TABLE employee (
+    e_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    address VARCHAR(50) NOT NULL,
+    birthday DATE NOT NULL,
+    position ENUM(
+        'Trainee', 'Personnel', 'Analyst', 'Developer',
+        'Project leader', 'Manager', 'CEO', 'Suport'
+    ) NOT NULL,
+    department ENUM(
+        'Frontend', 'Backend', 'QA',
+        'Human Resources', 'Logistics', 'Research', 'Administration'
+    ) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE account (
+    a_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    e_id INT NOT NULL UNIQUE,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('Admin', 'User') NOT NULL,
+
+    CONSTRAINT fk_account_employee
+        FOREIGN KEY (e_id)
+        REFERENCES employee(e_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE session_log (
+    sl_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    a_id INT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    status ENUM('Logged In', 'Logged Out') NOT NULL,
+
+    CONSTRAINT fk_session_log_account
+        FOREIGN KEY (a_id)
+        REFERENCES account(a_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE INDEX idx_account_eid ON account(e_id);
+CREATE INDEX idx_session_log_aid ON session_log(a_id);
+
+INSERT INTO employee (
+    name,
+    address,
+    birthday,
+    position,
+    department
+) VALUES (
+    'System Administrator',
+    'Head Office',
+    '1995-01-01',
+    'Manager',
+    'Administration'
+);
+
+INSERT INTO account (
+    e_id,
+    username,
+    password,
+    role
+) VALUES (
+    1,
+    'admin',
+    '$2y$10$e0NRX...examplehash...',
+    'Admin'
+);
+
+INSERT INTO session_log (
+    a_id,
+    status
+) VALUES (
+    1,
+    'Logged In'
+);

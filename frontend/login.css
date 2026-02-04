@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.employee-form {
+    width: 25rem;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fefefe;
+}
+
+
+/* Style ALL form inputs including select */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #4c7aaf;
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4ca8af;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s;
+}

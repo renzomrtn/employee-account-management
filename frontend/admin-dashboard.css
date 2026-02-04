@@ -1,0 +1,142 @@
+.employee-form {
+  background-color: #fefefe;
+  padding: 2rem;
+  width: 25%;
+  border: 2px solid #4c7aaf;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.wrap {
+  display: flex;
+  gap: 10px;
+}
+
+.inner-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.top, .bottom {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+}
+
+.form-section{
+  font-weight: bold;
+}
+
+.employee-table {
+  background-color: #fefefe;
+  padding: 2rem;
+  border: 2px solid #4c7aaf;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.session-table {
+  background-color: #fefefe;
+  padding: 2rem;
+  border: 2px solid #4c7aaf;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #4c7aaf;
+}
+
+h3 {
+  margin: 0;
+
+}
+
+.refresh {
+  width: auto;
+}
+
+tbody th {
+  font-weight: normal;
+  text-align: left;
+  padding: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Style ALL form inputs including select */
+input[type="text"],
+input[type="date"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #4c7aaf;
+  border-radius: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+/* Remove default select appearance */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8"><path fill="%234c7aaf" d="M0 0l6 8 6-8z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+input:focus, select:focus {
+  box-shadow: 4px 4px 0px #4c7aaf;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf6a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s;
+}
+
+.refresh {
+  padding: 12px;
+  background-color: #4caf6a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  border-radius: 0;
+  transition: all 0.3s;
+}
