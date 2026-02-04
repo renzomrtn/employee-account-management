@@ -37,7 +37,17 @@ document.getElementById("employee-form").addEventListener("submit", async functi
         if (response.ok) {
             alert("Login successful!");
             console.log(data);
-            window.location.href = "admin-dashboard.html";
+                console.log("Full data:", data);
+                console.log("Role value:", data.role);
+                console.log("Role type:", typeof data.role);
+
+            if (data.role === 'Admin') {
+                window.location.href = "admin-dashboard.html";
+            } else if (data.role === 'User') {
+                window.location.href = "employee-dashboard.html";
+            } else {
+                alert("Unknown role");
+            }
         } else {
             alert(data.message || "Login failed");
         }

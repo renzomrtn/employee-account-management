@@ -46,6 +46,7 @@ try {
 
         $_SESSION['account_id']  = $loginResult['account_id'];
         $_SESSION['username']      = $username;
+        $_SESSION['role']          = $loginResult['role']; 
         $_SESSION['login_time']  = time();
         $_SESSION['session_token'] = bin2hex(random_bytes(32));
 
@@ -54,6 +55,7 @@ try {
             'message' => 'Login successful',
             'account_id' => $loginResult['account_id'],
             'username' => $username,
+            'role' => $loginResult['role'],
             'session_token' => $_SESSION['session_token']
         ]);
 

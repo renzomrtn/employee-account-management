@@ -18,7 +18,7 @@ public $role;
     }
 
     public function login($username, $password) {
-        $query = "SELECT a_id, password FROM " . $this->table . " WHERE username = :username LIMIT 1";
+        $query = "SELECT a_id, password, role FROM " . $this->table . " WHERE username = :username LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username);
         $stmt->execute();
@@ -28,11 +28,13 @@ public $role;
         }
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        error_log("Fetched row: " . print_r($row, true));
 
         if (password_verify($password, $row['password'])) {
             return [
                 'success' => true,
-                'account_id' => $row['a_id']
+                'account_id' => $row['a_id'],
+                'role' => $row['role']
             ];
         }
 
