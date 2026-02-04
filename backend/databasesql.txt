@@ -29,20 +29,7 @@ CREATE TABLE account (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-CREATE TABLE session_log (
-    sl_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    a_id INT NOT NULL,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    status ENUM('Logged In', 'Logged Out') NOT NULL,
-
-    CONSTRAINT fk_session_log_account
-        FOREIGN KEY (a_id)
-        REFERENCES account(a_id)
-        ON DELETE CASCADE
-) ENGINE=InnoDB;
-
 CREATE INDEX idx_account_eid ON account(e_id);
-CREATE INDEX idx_session_log_aid ON session_log(a_id);
 
 INSERT INTO employee (
     name,
@@ -68,12 +55,4 @@ INSERT INTO account (
     'admin',
     '$2y$10$e0NRX...examplehash...',
     'Admin'
-);
-
-INSERT INTO session_log (
-    a_id,
-    status
-) VALUES (
-    1,
-    'Logged In'
 );
