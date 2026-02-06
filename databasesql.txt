@@ -1,5 +1,5 @@
-CREATE DATABASE employee_db;
-USE employee_db;
+CREATE DATABASE company_db;
+USE company_db;
 
 CREATE TABLE employee (
     e_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -8,10 +8,10 @@ CREATE TABLE employee (
     birthday DATE NOT NULL,
     position ENUM(
         'Trainee', 'Personnel', 'Analyst', 'Developer',
-        'Project leader', 'Manager', 'CEO', 'Support'
+        'Project leader', 'Manager', 'CEO', 'Support', 'Staff'
     ) NOT NULL,
     department ENUM(
-        'Frontend', 'Backend', 'QA',
+        'Frontend', 'Backend', 'QA', 'ICT',
         'Human Resources', 'Logistics', 'Research', 'Administration'
     ) NOT NULL
 ) ENGINE=InnoDB;
@@ -21,7 +21,8 @@ CREATE TABLE account (
     e_id INT NOT NULL UNIQUE,
     username VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    role ENUM('Admin', 'User') NOT NULL,
+    role ENUM('Global Admin', 'Admin', 'User') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT fk_account_employee
         FOREIGN KEY (e_id)
@@ -29,7 +30,20 @@ CREATE TABLE account (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+CREATE TABLE session_log (
+    sl_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    a_id INT NOT NULL,
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    status ENUM('Logged In', 'Logged Out') NOT NULL,
+
+    CONSTRAINT fk_session_log_account
+        FOREIGN KEY (a_id)
+        REFERENCES account(a_id)
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 CREATE INDEX idx_account_eid ON account(e_id);
+CREATE INDEX idx_session_log_aid ON session_log(a_id);
 
 INSERT INTO employee (
     name,
@@ -38,11 +52,11 @@ INSERT INTO employee (
     position,
     department
 ) VALUES (
-    'System Administrator',
+    'Global System Administrator',
     'Head Office',
     '1995-01-01',
     'Manager',
-    'Administration'
+    'ICT'
 );
 
 INSERT INTO account (
@@ -52,7 +66,15 @@ INSERT INTO account (
     role
 ) VALUES (
     1,
-    'admin',
+    'GlobalAdmin',
     '$2y$10$NKL6oi6k29V029ZMb5.H3eSY//ZfST/aiLe75gFZiOyF883Tjx1Hy',
-    'Admin'
+    'Global Admin'
+);
+
+INSERT INTO session_log (
+    a_id,
+    status
+) VALUES (
+    1,
+    'Logged In'
 );

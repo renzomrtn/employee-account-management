@@ -1,0 +1,5 @@
+1. Unzip folder
+2. Paste the folder inside htdocs
+3. Copy and paste the sql in phpmyadmin
+4. Open xampp and activate apache and mysql
+5. Access using localhost/Activity1

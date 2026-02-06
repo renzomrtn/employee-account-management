@@ -10,14 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 }
 
 require_once __DIR__ . "/../../config/database.php";
-require_once __DIR__ . "/../../models/account.php";
+require_once __DIR__ . "/../../models/session_log.php";
 
 $database = new Database();
 $db = $database->connect();
 
-$account = new Account($db);
+$session_log = new Session_Log($db);
 
-$result = $account->read();
+$result = $session_log->read();
 
 $num = $result->rowCount();
 
@@ -30,12 +30,10 @@ if ($num > 0) {
         extract($row);
 
         $employee_item = array(
+            'sl_id' => $sl_id,
             'a_id' => $a_id,
-            'e_id' => $e_id,
-            'username' => $username,
-            'password' => $password,
-            'role' => $role,
-            'created_at' => $created_at
+            'login_time' => $login_time,
+            'status' => $status
         );        
 
         array_push($employee_arr['data'], $employee_item);

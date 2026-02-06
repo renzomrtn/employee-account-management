@@ -9,6 +9,7 @@ public $e_id;
 public $username;
 public $password;
 public $role;
+public $created_at;
 
     public function __construct($db) {
         $this->conn = $db;
@@ -55,6 +56,7 @@ public $role;
         e_id = :e_id,
         username = :username,
         password = :password,
+        created_at = :created_at,
         role = :role';
 
     $stmt = $this->conn->prepare($query);
@@ -70,12 +72,14 @@ public $role;
     $this->e_id = $cleanData($this->e_id);
     $this->username = $cleanData($this->username);
     $this->password = $cleanData($this->password);
+    $this->created_at = $cleanData($this->created_at);
     $this->role = $cleanData($this->role);
 
     $stmt->bindParam(':a_id', $this->a_id);
     $stmt->bindParam(':e_id', $this->e_id);
     $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':password', $this->password);
+    $stmt->bindParam(':created_at', $this->created_at);
     $stmt->bindParam(':role', $this->role);
 
     if($stmt->execute()){
@@ -94,6 +98,7 @@ public $role;
     e_id = :e_id,
     username = :username,
     password = :password,
+    created_at = :created_at,
     role = :role
     WHERE
         a_id = :a_id_where
@@ -112,12 +117,14 @@ public $role;
     $this->e_id = $cleanData($this->e_id);
     $this->username = $cleanData($this->username);
     $this->password = $cleanData($this->password);
+    $this->created_at = $cleanData($this->created_at);
     $this->role = $cleanData($this->role);
     
     $stmt->bindParam(':a_id', $this->a_id);
     $stmt->bindParam(':e_id', $this->e_id);
     $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':password', $this->password);
+    $stmt->bindParam(':created_at', $this->created_at);
     $stmt->bindParam(':role', $this->role);
     
     $stmt->bindParam(':a_id_where', $this->a_id);

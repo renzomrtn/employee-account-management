@@ -41,14 +41,14 @@ document.getElementById("employee-form").addEventListener("submit", async functi
             console.log("Role value:", data.role);
             console.log("Role type:", typeof data.role);
 
-            if (data.role === 'Admin') {
+            if (data.role === 'Admin' || data.role === 'Global Admin') {
                 window.location.href = "/Activity1/admin/admin-dashboard.php";
             } else if (data.role === 'User') {
                 window.location.href = "/Activity1/employee/employee-dashboard.php";
-            }
-            else {
+            } else {
                 alert("Unknown role");
             }
+
         } else {
             alert(data.message || "Login failed");
         }

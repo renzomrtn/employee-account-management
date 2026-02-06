@@ -1,11 +1,15 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'Admin') {
+if (
+    !isset($_SESSION['account_id']) ||
+    ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'Global Admin')
+) {
     header("Location: /Activity1/public/access-denied.html");
     exit;
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,29 +117,54 @@ if (!isset($_SESSION['account_id']) || $_SESSION['role'] !== 'Admin') {
                     </form>
                 </div>
                 <div class="employee-table">
-                <div class="modal-head">
-                    <h3>Employee & Account Data</h3>
-                    <button type="button" class="refresh">Refresh</button>
+                    <div class="modal-head">
+                        <h3>Employee & Account Data</h3>
+                        <button type="button" class="refresh">Refresh</button>
+                    </div>
+                    <table id="employee-account-data">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Department</th>
+                                <th>Username</th>
+                                <th>Role</th>
+                                <th>Date Created</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-                <table id="employee-account-data">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Department</th>
-                            <th>Username</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
             </div>
+            <div class="bottom">
+                <div class="session-table">
+                    <div class="modal-head">
+                        <h3>Log</h3>
+                        <button type="button" class="refresh">Refresh</button>
+                    </div>
+                    <table id="session-log-data">
+                        <thead>
+                            <tr>
+                                <th>Log ID</th>
+                                <th>Account ID</th>
+                                <th>Username</th>
+                                <th>Status</th>
+                                <th>Login Timestamp</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <script src="/Activity1/admin/admin-dashboard.js"></script>
-        <script src="/Activity1/public/logout.js"></script>
+    </div>
+    <script src="/Activity1/admin/admin-dashboard.js"></script>
+    <script src="/Activity1/public/logout.js"></script>
 </body>
 
 </html>
